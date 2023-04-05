@@ -4,7 +4,7 @@
 module.exports = {
   siteMetadata: {
     title: `Tyson Ross`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.tysonross.com`
   },
   plugins: ["gatsby-plugin-sass", "gatsby-plugin-google-gtag", "gatsby-plugin-image", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
@@ -25,5 +25,15 @@ module.exports = {
       "path": "./src/pages/"
     },
     __key: "pages"
-  }]
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `data`,
+      path: `${__dirname}/src/data/`,
+      // Ignore files starting with a dot
+      ignore: [`**/\.*`],
+      // Use "mtime" and "inode" to fingerprint files (to check if file has changed)
+      fastHash: true,
+    }]
 };
