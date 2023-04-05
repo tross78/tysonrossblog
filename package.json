@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "predeploy": "gatsby build --prefix-paths",
-    "deploy": "gh-pages -d public",  
+    "deploy": "gh-pages -d public",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -19,7 +19,6 @@
   "dependencies": {
     "@mdx-js/react": "^2.3.0",
     "gatsby": "^5.8.1",
-    "gatsby-plugin-google-gtag": "^5.8.0",
     "gatsby-plugin-image": "^3.8.0",
     "gatsby-plugin-manifest": "^5.8.0",
     "gatsby-plugin-mdx": "^5.8.0",
