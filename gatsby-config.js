@@ -25,8 +25,7 @@ module.exports = {
       "path": "./src/pages/"
     },
     __key: "pages"
-  },
-  {
+  }, {
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `data`,
@@ -35,5 +34,6 @@ module.exports = {
       ignore: [`**/\.*`],
       // Use "mtime" and "inode" to fingerprint files (to check if file has changed)
       fastHash: true,
-    }]
+    }
+}]
 };
