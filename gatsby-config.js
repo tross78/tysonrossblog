@@ -6,7 +6,7 @@ module.exports = {
     title: `Tyson Ross`,
     siteUrl: `https://www.tysonross.com`
   },
-  plugins: ["gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-sitemap", {
+  plugins: ["gatsby-transformer-remark", "gatsby-plugin-sass", "gatsby-plugin-image", "gatsby-plugin-sitemap", {
     resolve: 'gatsby-plugin-manifest',
     options: {
       "icon": "src/images/icon.png"
@@ -35,5 +35,11 @@ module.exports = {
       // Use "mtime" and "inode" to fingerprint files (to check if file has changed)
       fastHash: true,
     }
-}]
+  },
+  {
+    resolve: `gatsby-plugin-mdx`,
+    options: {
+      extensions: [`.mdx`, `.md`],
+    }
+  }]
 };
