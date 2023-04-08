@@ -1,35 +1,35 @@
-const path = require("path");
+import React from "react"
+import { graphql, Link } from "gatsby"
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+export default function IndexPage({ data }) {
+  const { edges: posts } = data.allMarkdownRemark
 
-  const blogTemplate = path.resolve("src/templates/blogTemplate.js");
+  return (
+    <div>
+      <h1>Blog Posts</h1>
+      <ul>
+        {posts.map(({ node: post }) => (
+          <li key={post.id}>
+            <Link to={post.frontmatter.path}>{post.frontmatter.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
-  const result = await graphql(`
-    {
-      allMarkdownRemark {
-        edges {
-          node {
-            frontmatter {
-              path
-            }
+export const query = graphql`
+  query {
+    allMarkdownRemark {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            path
           }
         }
       }
     }
-  `);
-
-  if (result.errors) {
-    throw result.errors;
   }
-
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    createPage({
-      path: node.frontmatter.path,
-      component: blogTemplate,
-      context: {
-        pathSlug: node.frontmatter.path,
-      },
-    });
-  });
-};
+`
